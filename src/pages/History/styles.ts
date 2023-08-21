@@ -6,6 +6,7 @@ export const HistoryContainer = styled.main`
 
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 
   > h1 {
     font-size: 1.5rem;
@@ -13,17 +14,28 @@ export const HistoryContainer = styled.main`
 
     color: ${(props) => props.theme['gray-100']};
   }
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    overflow: auto;
+  }
 `
 
 export const HistoryList = styled.div`
   flex: 1;
-  overflow: auto;
   margin-top: 2rem;
+  overflow-y: auto;
 
   table {
     width: 100%;
     border-collapse: collapse;
     min-width: 600px;
+    overflow-y: auto;
+  }
+
+  thead {
+    position: sticky;
+    top: 0;
   }
 
   th {
@@ -57,6 +69,16 @@ export const HistoryList = styled.div`
     }
     &:last-child {
       padding-right: 1.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    min-width: 200px;
+
+    td {
+      &:first-child {
+        width: 20%;
+      }
     }
   }
 `
