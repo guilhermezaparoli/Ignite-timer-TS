@@ -24,15 +24,15 @@ export function History() {
             {cycles.map((cycle) => {
               return (
                 <tr key={cycle.id}>
-                  <td>{cycle.task}</td>
-                  <td>{cycle.minutesAmount} minutos</td>
-                  <td>
+                  <td data-label="Tarefa">{cycle.task}</td>
+                  <td data-label="Duração">{cycle.minutesAmount} minutos</td>
+                  <td data-label="Início">
                     {formatDistanceToNow(new Date(cycle.startDate), {
                       addSuffix: true,
                       locale: ptBR,
                     })}
                   </td>
-                  <td>
+                  <td data-label="Status">
                     {cycle.finishedDate && (
                       <Status statusColor="green">Concluído</Status>
                     )}

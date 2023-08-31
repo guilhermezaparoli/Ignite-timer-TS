@@ -2,6 +2,7 @@ import { useContext, useEffect } from 'react'
 import { CountdownContainer, Separator } from './styles'
 import { differenceInSeconds } from 'date-fns'
 import { CyclesContext } from '../../../../contexts/CyclesContext'
+import { SoundContext } from '../../../../contexts/SoundContext'
 
 export function Countdown() {
   const {
@@ -11,6 +12,8 @@ export function Countdown() {
     setSecondsPassed,
     amountSecondsPassed,
   } = useContext(CyclesContext)
+
+  const { timeEnd } = useContext(SoundContext)
 
   const totalSeconds = activeCycle ? activeCycle.minutesAmount * 60 : 0
 
@@ -27,6 +30,7 @@ export function Countdown() {
         )
 
         if (secondsDifference >= totalSeconds) {
+          timeEnd()
           markCurrentCycleAsFinished()
           setSecondsPassed(totalSeconds)
           clearInterval(interval)
@@ -65,6 +69,8 @@ export function Countdown() {
   useEffect(() => {
     if (activeCycle) {
       document.title = `${minutes}:${seconds}`
+    } else {
+      document.title = `Ignite Timer`
     }
   }, [minutes, seconds, activeCycle])
 

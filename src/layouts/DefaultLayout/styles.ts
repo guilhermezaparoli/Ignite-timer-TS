@@ -14,6 +14,8 @@ export const LayoutContainer = styled.div`
   flex-direction: column;
 
   @media (max-width: 768px) {
-    padding: 1.5rem;
+    padding: 1.5rem 0.5rem;
+    min-height: 450px;
+    margin: 5rem 10px;
   }
 `

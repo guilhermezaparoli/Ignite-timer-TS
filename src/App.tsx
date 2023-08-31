@@ -5,13 +5,16 @@ import { GlobalStyle } from './styles/global'
 import { BrowserRouter } from 'react-router-dom'
 import { Router } from './Router'
 import { CyclesContextProvider } from './contexts/CyclesContext'
+import { SoundContextProvider } from './contexts/SoundContext'
 
 export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <BrowserRouter>
         <CyclesContextProvider>
-          <Router />
+          <SoundContextProvider>
+            <Router />
+          </SoundContextProvider>
         </CyclesContextProvider>
       </BrowserRouter>
       <GlobalStyle />

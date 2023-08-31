@@ -1,43 +1,57 @@
 import { useFormContext } from 'react-hook-form'
-import { FormContainer, MinutesAmountInput, TaskInput } from './styles'
+import {
+  FirstBlock,
+  FormContainer,
+  MinutesAmountInput,
+  SecondBlock,
+  TaskInput,
+} from './styles'
 import { useContext } from 'react'
 import { CyclesContext } from '../../../../contexts/CyclesContext'
 
-export function NewCycleForm() {
+interface NewCycleFormProps {
+  populateDataList: string[] | undefined
+}
+
+export function NewCycleForm({ populateDataList }: NewCycleFormProps) {
   const { activeCycle } = useContext(CyclesContext)
   const { register } = useFormContext()
 
   return (
     <FormContainer>
-      <label htmlFor="task">Vou trabalhar em</label>
-      <TaskInput
-        type="text"
-        id="task"
-        placeholder="Dê um nome para o seu projeto"
-        list="task-suggestions"
-        disabled={!!activeCycle}
-        {...register('task')}
-      />
-      <label htmlFor="minutesAmount">durante</label>
+      <FirstBlock>
+        <label htmlFor="task">Vou me dedicar em</label>
+        <TaskInput
+          type="text"
+          id="task"
+          placeholder="Dê um nome para a sua tarefa"
+          list="task-suggestions"
+          disabled={!!activeCycle}
+          {...register('task')}
+        />
+      </FirstBlock>
 
-      <datalist id="task-suggestions">
-        <option value="Projeto 1" />
-        <option value="Projeto 2" />
-        <option value="Projeto 3" />
-        <option value="Banana" />
-      </datalist>
+      <SecondBlock>
+        <label htmlFor="minutesAmount">durante</label>
+        <datalist id="task-suggestions">
+          {populateDataList &&
+            populateDataList.map((tarefa, index) => {
+              return <option value={tarefa} key={index} />
+            })}
+        </datalist>
 
-      <MinutesAmountInput
-        type="number"
-        id="minutesAmount"
-        placeholder="00"
-        step={5}
-        min={1}
-        max={60}
-        disabled={!!activeCycle}
-        {...register('minutesAmount', { valueAsNumber: true })}
-      />
-      <span>minutos.</span>
+        <MinutesAmountInput
+          type="number"
+          id="minutesAmount"
+          placeholder="00"
+          step={5}
+          min={5}
+          max={60}
+          disabled={!!activeCycle}
+          {...register('minutesAmount', { valueAsNumber: true })}
+        />
+        <span>minutos.</span>
+      </SecondBlock>
     </FormContainer>
   )
 }

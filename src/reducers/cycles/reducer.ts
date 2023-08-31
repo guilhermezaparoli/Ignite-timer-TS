@@ -15,7 +15,7 @@ interface CyclesState {
   activeCycleId: string | null
 }
 
-export function CyclesReduce(state: CyclesState, action: any) {
+export function cyclesReducer(state: CyclesState, action: any) {
   switch (action.type) {
     case ActionTypes.ADD_NEW_CYCLE:
       return produce(state, (draft) => {
@@ -24,6 +24,8 @@ export function CyclesReduce(state: CyclesState, action: any) {
       })
 
     case ActionTypes.INTERRUPT_CURRENT_CYCLE: {
+      console.log(action)
+
       const currentCycleIndex = state.cycles.findIndex((cycle) => {
         return cycle.id === state.activeCycleId
       })

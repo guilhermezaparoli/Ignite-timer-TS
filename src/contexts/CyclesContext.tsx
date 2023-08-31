@@ -5,7 +5,7 @@ import {
   useReducer,
   useState,
 } from 'react'
-import { Cycle, CyclesReduce } from '../reducers/cycles/reducer'
+import { Cycle, cyclesReducer } from '../reducers/cycles/reducer'
 import {
   addNewCycleAction,
   interruptCurrentCycleAction,
@@ -39,12 +39,12 @@ export function CyclesContextProvider({
   children,
 }: CyclesContextProviderProps) {
   const [cyclesState, dispatch] = useReducer(
-    CyclesReduce,
+    cyclesReducer,
     {
       cycles: [],
       activeCycleId: null,
     },
-    () => {
+    (initialState) => {
       const storedStateAsJSON = localStorage.getItem(
         '@ignite-timer:cycles-state-1.0.0',
       )
@@ -52,6 +52,7 @@ export function CyclesContextProvider({
       if (storedStateAsJSON) {
         return JSON.parse(storedStateAsJSON)
       }
+      return initialState
     },
   )
   const { cycles, activeCycleId } = cyclesState

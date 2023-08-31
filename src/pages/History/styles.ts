@@ -6,7 +6,7 @@ export const HistoryContainer = styled.main`
 
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  overflow: auto;
 
   > h1 {
     font-size: 1.5rem;
@@ -17,7 +17,6 @@ export const HistoryContainer = styled.main`
 
   @media (max-width: 768px) {
     padding: 1rem;
-    overflow: auto;
   }
 `
 
@@ -30,7 +29,6 @@ export const HistoryList = styled.div`
     width: 100%;
     border-collapse: collapse;
     min-width: 600px;
-    overflow-y: auto;
   }
 
   thead {
@@ -65,20 +63,53 @@ export const HistoryList = styled.div`
 
     &:first-child {
       padding-left: 1.5rem;
-      width: 50%;
+      width: 40%;
     }
     &:last-child {
       padding-right: 1.5rem;
     }
   }
 
-  @media (max-width: 768px) {
-    min-width: 200px;
+  @media (max-width: 875px) {
+    table {
+      min-width: 100%;
+    }
 
+    thead {
+      display: none;
+    }
+
+    table,
+    tbody,
+    tr,
     td {
+      display: block;
+      width: 100%;
+    }
+    tr {
+      margin-bottom: 15px;
+    }
+    td {
+      text-align: right;
+      padding-left: 50%;
+      text-align: right;
+      position: relative;
+
       &:first-child {
-        width: 20%;
+        padding-left: 1.5rem;
+        width: 100%;
       }
+    }
+
+    td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 0;
+      width: 50%;
+      padding-left: 15px;
+      font-size: 15px;
+      font-weight: bold;
+      text-align: left;
     }
   }
 `
@@ -103,5 +134,9 @@ export const Status = styled.span<StatusProps>`
     border-radius: 50%;
     background-color: ${(props) =>
       props.theme[STATUS_COLORS[props.statusColor]]};
+  }
+
+  @media (max-width: 875px) {
+    justify-content: end;
   }
 `
