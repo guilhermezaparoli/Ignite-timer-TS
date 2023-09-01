@@ -32,6 +32,10 @@ export const FirstBlock = styled.div`
     justify-content: center;
     min-width: 120px;
   }
+
+  @media (max-width: 768px) {
+    gap: 10px;
+  }
 `
 
 export const SecondBlock = styled.div`

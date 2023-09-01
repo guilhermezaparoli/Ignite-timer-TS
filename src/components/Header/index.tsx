@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom'
 export function Header() {
   return (
     <HeaderContainer>
-      <NavLink style={{ boxShadow: 'none' }} to="/">
+      <NavLink style={{ boxShadow: 'none', zIndex: '2' }} to="/">
         <img style={{ boxShadow: 'none' }} src={logoIgnite} alt="" />
       </NavLink>
 

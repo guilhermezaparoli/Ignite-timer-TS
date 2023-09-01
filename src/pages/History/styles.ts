@@ -1,4 +1,5 @@
 import { styled } from 'styled-components'
+import Lottie from 'lottie-react'
 
 export const HistoryContainer = styled.main`
   flex: 1;
@@ -17,6 +18,55 @@ export const HistoryContainer = styled.main`
 
   @media (max-width: 768px) {
     padding: 1rem;
+  }
+
+  .rain:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: white;
+    animation: lighting 4s linear infinite;
+    opacity: 0;
+  }
+
+  @keyframes rain {
+    0% {
+      background-position: 0% 0%;
+    }
+
+    100% {
+      background-position: 20% 100%;
+    }
+  }
+
+  @keyframes lighting {
+    0% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 0;
+    }
+    11% {
+      opacity: 1;
+    }
+    14% {
+      opacity: 0;
+    }
+    20% {
+      opacity: 0;
+    }
+    21% {
+      opacity: 1;
+    }
+    24% {
+      opacity: 0;
+    }
+    104% {
+      opacity: 0;
+    }
   }
 `
 
@@ -138,5 +188,51 @@ export const Status = styled.span<StatusProps>`
 
   @media (max-width: 875px) {
     justify-content: end;
+  }
+`
+export const ImageContainer = styled.div`
+  > img {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    height: 200px;
+  }
+`
+
+export const TextNoTasks = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 2rem;
+  > p {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 0;
+    > p {
+      font-size: 1rem;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    > p {
+      font-size: 0.875rem;
+    }
+  }
+`
+
+export const StyledLottieRain = styled(Lottie)`
+  height: 175px;
+  @media (max-width: 768px) {
+    height: 100px;
+  }
+`
+export const StyledLottieGhost = styled(Lottie)`
+  height: 220px;
+  @media (max-width: 768px) {
+    height: 150px;
   }
 `

@@ -9,6 +9,7 @@ export const HeaderContainer = styled.header`
     display: flex;
 
     gap: 0.5rem;
+    z-index: 2;
 
     a {
       width: 3rem;
@@ -22,6 +23,7 @@ export const HeaderContainer = styled.header`
 
       border-top: 3px solid transparent;
       border-bottom: 3px solid transparent;
+      z-index: 2;
 
       &:hover {
         border-bottom: 3px solid ${(props) => props.theme['green-500']};
