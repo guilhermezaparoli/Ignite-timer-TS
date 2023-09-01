@@ -59,7 +59,7 @@ const BaseInput = styled.input`
 
   &::placeholder {
     color: ${(props) => props.theme['gray-500']};
-    font-size: 1rem;
+    font-size: 0.98rem;
   }
 
   &:focus {

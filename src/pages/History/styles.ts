@@ -225,7 +225,7 @@ export const TextNoTasks = styled.div`
 `
 
 export const StyledLottieRain = styled(Lottie)`
-  height: 175px;
+  height: 150px;
   @media (max-width: 768px) {
     height: 100px;
   }
