@@ -231,7 +231,7 @@ export const StyledLottieRain = styled(Lottie)`
   }
 `
 export const StyledLottieGhost = styled(Lottie)`
-  height: 220px;
+  height: 175px;
   @media (max-width: 768px) {
     height: 150px;
   }
